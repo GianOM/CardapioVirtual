@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://c1w0ej8fbl5au"]
+
+[ext_resource type="Script" uid="uid://cr5p523rr4kfg" path="res://Accelerometer.gd" id="2_cguwc"]
+[ext_resource type="Script" uid="uid://c7xqgkm7no1h0" path="res://Camera_Root.gd" id="3_go42g"]
+[ext_resource type="Script" uid="uid://1jy1ghvyemb3" path="res://My_Camera.gd" id="3_wicfy"]
+[ext_resource type="Script" uid="uid://bw5eyna5s8vvu" path="res://VR Initializer.gd" id="5_sreuk"]
+[ext_resource type="Script" uid="uid://b2054rmoribod" path="res://CameraPassthrough__SCRIPT.gd" id="5_tq6uv"]
+[ext_resource type="Texture2D" uid="uid://b8sshi1i8j6iv" path="res://icon.svg" id="6_12c36"]
+[ext_resource type="Shader" uid="uid://dmrsi6ll5kann" path="res://ProperYUV_to_RGB.gdshader" id="6_tq6uv"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_go42g"]
+
+[sub_resource type="CameraTexture" id="CameraTexture_sreuk"]
+which_feed = 1
+
+[sub_resource type="CameraTexture" id="CameraTexture_tq6uv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12c36"]
+shader = ExtResource("6_tq6uv")
+shader_parameter/camera_y = SubResource("CameraTexture_tq6uv")
+shader_parameter/camera_CbCr = SubResource("CameraTexture_sreuk")
+
+[node name="Node2D" type="Control" unique_id=1137256684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737643408]
+transform = Transform3D(-0.30904326, -0.7904745, 0.52881217, 0.9498961, -0.22919586, 0.21252443, -0.04679352, 0.5679958, 0.82170016, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Debug" type="Label" parent="." unique_id=2084895960]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.5
+offset_top = -458.0
+offset_right = 175.5
+offset_bottom = -408.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "debug acelerometer"
+script = ExtResource("2_cguwc")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=589182330]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1680949779]
+handle_input_locally = false
+size = Vector2i(610, 1356)
+render_target_update_mode = 0
+
+[node name="XROrigin3D" type="XROrigin3D" parent="SubViewportContainer/SubViewport" unique_id=1603496392]
+script = ExtResource("3_go42g")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="SubViewportContainer/SubViewport/XROrigin3D" unique_id=1664408148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2942924)
+script = ExtResource("3_wicfy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1473670163]
+transform = Transform3D(1, 0, 0, 0, 0.783791, -0.62102467, 0, 0.62102467, 0.783791, 0, 0, 0)
+mesh = SubResource("PrismMesh_go42g")
+
+[node name="Node" type="Node" parent="." unique_id=1665938514]
+script = ExtResource("5_sreuk")
+
+[node name="PhoneCamera Canvas" type="CanvasLayer" parent="." unique_id=1479675302]
+follow_viewport_enabled = true
+
+[node name="PhonTexture" type="TextureRect" parent="PhoneCamera Canvas" unique_id=203806544]
+material = SubResource("ShaderMaterial_12c36")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_right = 1342.2385
+offset_bottom = -756.0476
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = ExtResource("6_12c36")
+expand_mode = 3
+script = ExtResource("5_tq6uv")
+
+[node name="ColorRect" type="ColorRect" parent="PhoneCamera Canvas" unique_id=582600431]
+offset_right = 9.0
+offset_bottom = 1351.0
+
+[node name="ColorRect2" type="ColorRect" parent="PhoneCamera Canvas" unique_id=485497332]
+offset_left = 600.0
+offset_right = 609.0
+offset_bottom = 1351.0
+
+[node name="ColorRect3" type="ColorRect" parent="PhoneCamera Canvas" unique_id=281724288]
+offset_left = 608.0
+offset_top = 1346.0
+offset_right = 617.0
+offset_bottom = 2697.0
+rotation = 1.5707964
+
+[node name="ColorRect4" type="ColorRect" parent="PhoneCamera Canvas" unique_id=1570464538]
+offset_left = 608.0
+offset_right = 617.0
+offset_bottom = 1351.0
+rotation = 1.5707964
