@@ -3,12 +3,26 @@
 [ext_resource type="Script" uid="uid://cr5p523rr4kfg" path="res://Accelerometer.gd" id="2_cguwc"]
 [ext_resource type="Script" uid="uid://c7xqgkm7no1h0" path="res://Camera_Root.gd" id="3_go42g"]
 [ext_resource type="Script" uid="uid://1jy1ghvyemb3" path="res://My_Camera.gd" id="3_wicfy"]
+[ext_resource type="PackedScene" uid="uid://d4h7y8jdbgs7v" path="res://Suzanne__MESH.glb" id="4_b3dy1"]
+[ext_resource type="Script" uid="uid://5ihj2rjmdqg7" path="res://Rotating_Mesh__SCRIPT.gd" id="5_rxm5d"]
 [ext_resource type="Script" uid="uid://bw5eyna5s8vvu" path="res://VR Initializer.gd" id="5_sreuk"]
 [ext_resource type="Script" uid="uid://b2054rmoribod" path="res://CameraPassthrough__SCRIPT.gd" id="5_tq6uv"]
 [ext_resource type="Texture2D" uid="uid://b8sshi1i8j6iv" path="res://icon.svg" id="6_12c36"]
 [ext_resource type="Shader" uid="uid://dmrsi6ll5kann" path="res://ProperYUV_to_RGB.gdshader" id="6_tq6uv"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_go42g"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_12c36"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_5uqhi"]
+sky_material = SubResource("ProceduralSkyMaterial_12c36")
+
+[sub_resource type="Environment" id="Environment_b3dy1"]
+background_mode = 5
+background_color = Color(0, 0, 0, 0)
+sky = SubResource("Sky_5uqhi")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="CameraTexture" id="CameraTexture_sreuk"]
 which_feed = 1
@@ -28,10 +42,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737643408]
-transform = Transform3D(-0.30904326, -0.7904745, 0.52881217, 0.9498961, -0.22919586, 0.21252443, -0.04679352, 0.5679958, 0.82170016, 0, 0, 0)
-shadow_enabled = true
-
 [node name="Debug" type="Label" parent="." unique_id=2084895960]
 visible = false
 layout_mode = 1
@@ -50,9 +60,11 @@ theme_override_font_sizes/font_size = 36
 text = "debug acelerometer"
 script = ExtResource("2_cguwc")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=589182330]
-visible = false
-layout_mode = 1
+[node name="MundoVirtualCanvas" type="CanvasLayer" parent="." unique_id=2061931573]
+layer = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MundoVirtualCanvas" unique_id=589182330]
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,21 +72,30 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1680949779]
+[node name="SubViewport" type="SubViewport" parent="MundoVirtualCanvas/SubViewportContainer" unique_id=1680949779]
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(610, 1356)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="XROrigin3D" type="XROrigin3D" parent="SubViewportContainer/SubViewport" unique_id=1603496392]
+[node name="XROrigin3D" type="XROrigin3D" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=1603496392]
 script = ExtResource("3_go42g")
 
-[node name="XRCamera3D" type="XRCamera3D" parent="SubViewportContainer/SubViewport/XROrigin3D" unique_id=1664408148]
+[node name="XRCamera3D" type="XRCamera3D" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport/XROrigin3D" unique_id=1664408148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2942924)
 script = ExtResource("3_wicfy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1473670163]
-transform = Transform3D(1, 0, 0, 0, 0.783791, -0.62102467, 0, 0.62102467, 0.783791, 0, 0, 0)
-mesh = SubResource("PrismMesh_go42g")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=1737643408]
+transform = Transform3D(-0.30904326, -0.79047453, 0.52881217, 0.9498961, -0.22919591, 0.21252438, -0.04679352, 0.56799585, 0.82170016, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=1310757558]
+environment = SubResource("Environment_b3dy1")
+
+[node name="Suzanne__MESH" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=149866686 instance=ExtResource("4_b3dy1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("5_rxm5d")
 
 [node name="Node" type="Node" parent="." unique_id=1665938514]
 script = ExtResource("5_sreuk")

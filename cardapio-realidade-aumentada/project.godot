@@ -19,7 +19,9 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=610
 window/size/viewport_height=1356
+window/size/transparent=true
 window/stretch/mode="viewport"
+window/per_pixel_transparency/allowed=true
 window/handheld/orientation=1
 
 [dotnet]

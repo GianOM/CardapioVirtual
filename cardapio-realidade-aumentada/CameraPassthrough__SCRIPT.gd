@@ -27,7 +27,7 @@ func _ready():
 		
 		#var Temp: Array[CameraFeed] = CameraServer.feeds()
 		
-		camera_feed.set_format(4, Temp_Array[4])
+		camera_feed.set_format(6, Temp_Array[6])
 		camera_feed.set_active(true)
 		
 		
@@ -45,18 +45,6 @@ func _ready():
 		
 		self.material.set("shader_parameter/camera_y", cam_text_y)
 		self.material.set("shader_parameter/camera_CbCr", cam_text_CbCr)
-		
-		
-		
-		
-		print("DONE")
 	else:
 		push_warning("No camera feeds found.")
 		
-		
-	
-	
-	
-	
-func _physics_process(delta: float) -> void:
-	print("STOP")
