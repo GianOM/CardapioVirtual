@@ -1,14 +1,23 @@
 [gd_scene format=3 uid="uid://c1w0ej8fbl5au"]
 
-[ext_resource type="Script" uid="uid://cr5p523rr4kfg" path="res://Accelerometer.gd" id="2_cguwc"]
 [ext_resource type="Script" uid="uid://c7xqgkm7no1h0" path="res://Camera_Root.gd" id="3_go42g"]
-[ext_resource type="Script" uid="uid://1jy1ghvyemb3" path="res://My_Camera.gd" id="3_wicfy"]
 [ext_resource type="PackedScene" uid="uid://d4h7y8jdbgs7v" path="res://Suzanne__MESH.glb" id="4_b3dy1"]
 [ext_resource type="Script" uid="uid://5ihj2rjmdqg7" path="res://Rotating_Mesh__SCRIPT.gd" id="5_rxm5d"]
-[ext_resource type="Script" uid="uid://bw5eyna5s8vvu" path="res://VR Initializer.gd" id="5_sreuk"]
-[ext_resource type="Script" uid="uid://b2054rmoribod" path="res://CameraPassthrough__SCRIPT.gd" id="5_tq6uv"]
 [ext_resource type="Texture2D" uid="uid://b8sshi1i8j6iv" path="res://icon.svg" id="6_12c36"]
+[ext_resource type="Script" uid="uid://yj56pytjihcr" path="res://TouchScreenDetection__SCRIPT.gd" id="6_rxm5d"]
 [ext_resource type="Shader" uid="uid://dmrsi6ll5kann" path="res://ProperYUV_to_RGB.gdshader" id="6_tq6uv"]
+[ext_resource type="Shader" uid="uid://cw4gu4ttaedft" path="res://Background_QuadMehs.gdshader" id="9_b3dy1"]
+[ext_resource type="Script" uid="uid://b0f6yg47qr66r" path="res://Mesh_Instance_Background.gd" id="10_rxm5d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3dy1"]
+render_priority = 5
+blend_mode = 4
+depth_draw_mode = 1
+shading_mode = 2
+diffuse_mode = 3
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b3dy1"]
+points = PackedVector3Array(-0.041307237, -0.95566714, 0.6129175, 0.32892573, 0.93857425, -0.046321563, 0.3299492, 0.9415191, -0.08766074, -1.3889015, 0.33926085, -0.39576465, 1.2235432, 0.03162808, -0.5183448, 0.32772526, 0.64806354, 0.8147174, -0.040264253, 0.07247961, -0.8086347, -0.81691253, 0.44136775, 0.6075423, -0.3469535, -0.96232456, 0.38528854, 0.816982, 0.44140598, 0.6074345, 0.040192217, 0.7587079, -0.650779, 0.3469534, -0.96232456, 0.38528854, 1.3889015, 0.33926085, -0.39559472, -0.44999605, 0.89244384, 0.076492, -1.2235258, 0.031627513, -0.5183374, 0.039063666, -0.16445968, -0.67180884, -0.32772535, 0.6480635, 0.81471735, 0.08054834, 0.55641264, -0.8113533, 0.122524105, -0.70313084, 0.73122066, -1.2724882, 0.40252182, -0.5388704, -0.28330624, -0.81741184, 0.6424729, -1.3453965, 0.07894377, -0.39576465, -0.08213556, 0.8962011, -0.4983086, 1.2724881, 0.40252185, -0.53887045, 0.3242725, -0.8999277, 0.5625884, 1.3453963, 0.07894377, -0.39559472, 0.3309909, 0.73737943, 0.740043, -0.36519787, 0.15460174, 0.8072317, 1.3453963, 0.4260332, -0.39559472, 0.44324338, 0.8386354, -0.40838757, 0.36540705, 0.15458164, 0.8071312, -0.4540762, 0.9006067, -0.21173923)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_12c36"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,6 +33,13 @@ sky = SubResource("Sky_5uqhi")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_5uqhi"]
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxm5d"]
+render_priority = 0
+shader = ExtResource("9_b3dy1")
+
 [sub_resource type="CameraTexture" id="CameraTexture_sreuk"]
 which_feed = 1
 
@@ -34,76 +50,50 @@ shader = ExtResource("6_tq6uv")
 shader_parameter/camera_y = SubResource("CameraTexture_tq6uv")
 shader_parameter/camera_CbCr = SubResource("CameraTexture_sreuk")
 
-[node name="Node2D" type="Control" unique_id=1137256684]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="World Root" type="Node3D" unique_id=952781716]
 
-[node name="Debug" type="Label" parent="." unique_id=2084895960]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -175.5
-offset_top = -458.0
-offset_right = 175.5
-offset_bottom = -408.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 36
-text = "debug acelerometer"
-script = ExtResource("2_cguwc")
-
-[node name="MundoVirtualCanvas" type="CanvasLayer" parent="." unique_id=2061931573]
-layer = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MundoVirtualCanvas" unique_id=589182330]
-z_index = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="MundoVirtualCanvas/SubViewportContainer" unique_id=1680949779]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(610, 1356)
-render_target_update_mode = 4
-
-[node name="XROrigin3D" type="XROrigin3D" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=1603496392]
-script = ExtResource("3_go42g")
-
-[node name="XRCamera3D" type="XRCamera3D" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport/XROrigin3D" unique_id=1664408148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2942924)
-script = ExtResource("3_wicfy")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=1737643408]
-transform = Transform3D(-0.30904326, -0.79047453, 0.52881217, 0.9498961, -0.22919591, 0.21252438, -0.04679352, 0.56799585, 0.82170016, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_mode = 0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=1310757558]
-environment = SubResource("Environment_b3dy1")
-
-[node name="Suzanne__MESH" parent="MundoVirtualCanvas/SubViewportContainer/SubViewport" unique_id=149866686 instance=ExtResource("4_b3dy1")]
+[node name="Suzanne__MESH" parent="." unique_id=149866686 instance=ExtResource("4_b3dy1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("5_rxm5d")
 
-[node name="Node" type="Node" parent="." unique_id=1665938514]
-script = ExtResource("5_sreuk")
+[node name="Suzanne" parent="Suzanne__MESH" index="0" unique_id=510792282]
+surface_material_override/0 = SubResource("StandardMaterial3D_b3dy1")
 
-[node name="PhoneCamera Canvas" type="CanvasLayer" parent="." unique_id=1479675302]
-follow_viewport_enabled = true
+[node name="Area3D" type="Area3D" parent="Suzanne__MESH/Suzanne" index="0" unique_id=599809236]
+input_capture_on_drag = true
+script = ExtResource("6_rxm5d")
 
-[node name="PhonTexture" type="TextureRect" parent="PhoneCamera Canvas" unique_id=203806544]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suzanne__MESH/Suzanne/Area3D" unique_id=1355411697]
+shape = SubResource("ConvexPolygonShape3D_b3dy1")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1603496392]
+script = ExtResource("3_go42g")
+
+[node name="XRCamera3D" type="Camera3D" parent="XROrigin3D" unique_id=1213741799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2942924)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737643408]
+transform = Transform3D(-0.30904326, -0.79047453, 0.52881217, 0.9498961, -0.22919591, 0.21252437, -0.04679352, 0.56799585, 0.82170016, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1310757558]
+environment = SubResource("Environment_b3dy1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=802433118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7337346)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("PlaneMesh_5uqhi")
+surface_material_override/0 = SubResource("ShaderMaterial_rxm5d")
+script = ExtResource("10_rxm5d")
+
+[node name="PhonTexture" type="TextureRect" parent="." unique_id=203806544]
+visible = false
+modulate = Color(1, 1, 1, 0.33333334)
+show_behind_parent = true
 material = SubResource("ShaderMaterial_12c36")
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,28 +104,50 @@ offset_bottom = -756.0476
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
+mouse_filter = 2
 texture = ExtResource("6_12c36")
 expand_mode = 3
-script = ExtResource("5_tq6uv")
 
-[node name="ColorRect" type="ColorRect" parent="PhoneCamera Canvas" unique_id=582600431]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=589182330]
+visible = false
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1680949779]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(610, 1356)
+render_target_update_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=582600431]
 offset_right = 9.0
 offset_bottom = 1351.0
+mouse_filter = 2
 
-[node name="ColorRect2" type="ColorRect" parent="PhoneCamera Canvas" unique_id=485497332]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=485497332]
 offset_left = 600.0
 offset_right = 609.0
 offset_bottom = 1351.0
+mouse_filter = 2
 
-[node name="ColorRect3" type="ColorRect" parent="PhoneCamera Canvas" unique_id=281724288]
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=281724288]
 offset_left = 608.0
 offset_top = 1346.0
 offset_right = 617.0
 offset_bottom = 2697.0
 rotation = 1.5707964
+mouse_filter = 2
 
-[node name="ColorRect4" type="ColorRect" parent="PhoneCamera Canvas" unique_id=1570464538]
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=1570464538]
 offset_left = 608.0
 offset_right = 617.0
 offset_bottom = 1351.0
 rotation = 1.5707964
+mouse_filter = 2
+
+[editable path="Suzanne__MESH"]
