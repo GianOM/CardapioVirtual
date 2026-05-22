@@ -50,5 +50,6 @@ viewport/transparent_background=true
 
 openxr/enabled=true
 openxr/form_factor=1
-openxr/environment_blend_mode=2
+openxr/environment_blend_mode=0
+openxr/submit_depth_buffer=true
 shaders/enabled=true

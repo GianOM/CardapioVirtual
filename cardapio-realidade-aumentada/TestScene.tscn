@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c1w0ej8fbl5au"]
 
+[ext_resource type="Script" uid="uid://djrbtro2wa12p" path="res://test_scene.gd" id="1_rxm5d"]
+[ext_resource type="Script" uid="uid://b2mhcjgngcgy4" path="res://xr_camera_3d.gd" id="2_b3dy1"]
 [ext_resource type="Script" uid="uid://c7xqgkm7no1h0" path="res://Camera_Root.gd" id="3_go42g"]
 [ext_resource type="PackedScene" uid="uid://d4h7y8jdbgs7v" path="res://Suzanne__MESH.glb" id="4_b3dy1"]
 [ext_resource type="Script" uid="uid://5ihj2rjmdqg7" path="res://Rotating_Mesh__SCRIPT.gd" id="5_rxm5d"]
@@ -45,20 +47,21 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_12c36")
 
 [sub_resource type="Environment" id="Environment_b3dy1"]
-background_mode = 5
+background_mode = 1
 background_color = Color(0, 0, 0, 0)
 sky = SubResource("Sky_5uqhi")
 tonemap_mode = 2
 glow_enabled = true
 
 [node name="World Root" type="Node3D" unique_id=952781716]
+script = ExtResource("1_rxm5d")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1603496392]
+[node name="CameraOrigin3D" type="Node3D" parent="." unique_id=508024056]
 script = ExtResource("3_go42g")
 
-[node name="XRCamera3D" type="Camera3D" parent="XROrigin3D" unique_id=1213741799]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2942924)
+[node name="PhoneCamera3D" type="Camera3D" parent="CameraOrigin3D" unique_id=870971993]
 current = true
+script = ExtResource("2_b3dy1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=802433118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7337346)
@@ -129,6 +132,7 @@ rotation = 1.5707964
 mouse_filter = 2
 
 [node name="Dishes_Root" type="Node3D" parent="." unique_id=288030668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Suzanne__MESH" parent="Dishes_Root" unique_id=149866686 instance=ExtResource("4_b3dy1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
