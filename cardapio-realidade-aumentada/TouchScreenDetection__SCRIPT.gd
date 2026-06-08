@@ -6,9 +6,7 @@ const ROTATION_SENSITIVITY: float = 0.005
 @onready var mesh_root: Node3D = $"../.."
 
 
-@onready var phone_camera_3d: Camera3D = $"../../../../CameraOrigin3D/PhoneCamera3D"
-
-@onready var dishes_root: Node3D = $"../../.."
+@export var phone_camera_3d: Camera3D
 
 func _input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int):
 	

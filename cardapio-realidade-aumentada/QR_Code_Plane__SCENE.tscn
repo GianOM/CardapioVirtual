@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c2atjy2e07oi2"]
+
+[ext_resource type="Script" uid="uid://rmkgywtfbyt8" path="res://QR_Code_Plane__SCRIPT.gd" id="1_f7bsn"]
+[ext_resource type="PackedScene" uid="uid://dt0svnlbexj4m" path="res://Meshes/Rigged Plane.glb" id="1_fxotf"]
+
+[node name="QR Code Plane" type="Node3D" unique_id=606520430]
+script = ExtResource("1_f7bsn")
+
+[node name="Rigged Plane" parent="." unique_id=1718043498 instance=ExtResource("1_fxotf")]
+
+[node name="Camera3D" type="Camera3D" parent="Rigged Plane/Plane Armature/Skeleton3D" parent_id_path=PackedInt32Array(1718043498, 925851837) index="1" unique_id=969878062]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.2001619, 0)
+
+[editable path="Rigged Plane"]

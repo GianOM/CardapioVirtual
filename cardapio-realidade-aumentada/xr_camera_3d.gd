@@ -8,6 +8,10 @@ var initial_yaw : float = 0.0
 
 var k : float = 0.9
 
+var dt: float = 0.5
+
+var Last_Frame_Accelerometer: Vector3 = Vector3.ZERO
+
 func _ready():
 	await get_tree().process_frame
 	var magnet: Vector3 = Input.get_magnetometer()
@@ -17,6 +21,19 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	var magnet: Vector3 = Input.get_magnetometer().rotated(-Vector3.FORWARD, rotation.z).rotated(Vector3.RIGHT, rotation.x)
 	var gravity: Vector3 = Input.get_gravity()
+	
+	#var velocity: Vector3 = filter_vector3(Last_Frame_Accelerometer - Input.get_accelerometer(), 0.01) * delta
+	#var velocity: Vector3 = (Last_Frame_Accelerometer - gravity) * delta
+	var velocity: Vector3 = (Input.get_accelerometer() - gravity)  * delta
+	
+	
+	position += velocity * delta
+	
+	print(position)
+	Last_Frame_Accelerometer = gravity
+	
+	
+	
 	var roll_acc = atan2(-gravity.x, -gravity.y) 
 	gravity = gravity.rotated(-Vector3.FORWARD, rotation.z)
 	var pitch_acc = atan2(gravity.z, -gravity.y)
@@ -34,4 +51,25 @@ func _physics_process(delta: float) -> void:
 	
 	#position += movement_dir * 0.001
 	
-	#print(movement_dir)
+		
+
+		
+		
+		
+func Reset_Pos():
+	position = Vector3.ZERO
+		
+func filter_vector3(my_vec3: Vector3, threshold: float = 0.01) -> Vector3:
+	if abs(my_vec3.x) < threshold:
+		my_vec3.x = 0.0
+		
+		
+	if abs(my_vec3.y) < threshold:
+		my_vec3.y = 0.0
+		
+		
+	if abs(my_vec3.z) < threshold:
+		my_vec3.z = 0.0
+		
+		
+	return my_vec3
