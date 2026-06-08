@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c2atjy2e07oi2" path="res://QR_Code_Plane__SCENE.tscn" id="8_7tcvf"]
 [ext_resource type="Shader" uid="uid://cw4gu4ttaedft" path="res://Background_QuadMehs.gdshader" id="9_b3dy1"]
 [ext_resource type="Script" uid="uid://b0f6yg47qr66r" path="res://Mesh_Instance_Background.gd" id="10_rxm5d"]
+[ext_resource type="Script" uid="uid://c72gsqkeooud7" path="res://Menu__SCRIPT.gd" id="12_exllb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5uqhi"]
 orientation = 2
@@ -42,6 +43,11 @@ background_color = Color(0, 0, 0, 0)
 sky = SubResource("Sky_5uqhi")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tcvf"]
+blend_mode = 4
+depth_draw_mode = 1
+shading_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3dy1"]
 render_priority = 5
@@ -133,10 +139,10 @@ rotation = 1.5707964
 mouse_filter = 2
 
 [node name="Dishes_Root" type="Node3D" parent="." unique_id=288030668]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.18)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Dishes_Root" unique_id=1737643408]
-transform = Transform3D(-0.30904326, -0.79047453, 0.52881217, 0.9498961, -0.22919591, 0.21252437, -0.04679352, 0.56799585, 0.82170016, 0, 0, 0)
+transform = Transform3D(-0.17088816, -0.98042107, -0.097834736, 0.739518, -0.19324237, 0.6448028, -0.65108407, 0.03783857, 0.7580619, -0.160511, 0.2981806, 0.54520863)
 shadow_enabled = true
 directional_shadow_mode = 0
 
@@ -147,8 +153,12 @@ environment = SubResource("Environment_b3dy1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.849)
 User_Camera_ptr = NodePath("../../CameraOrigin3D/PhoneCamera3D")
 
+[node name="Plane" parent="Dishes_Root/QR Code Plane/Rigged Plane/Plane Armature/Skeleton3D" parent_id_path=PackedInt32Array(606520430, 1718043498, 925851837) index="0" unique_id=1331885451]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_7tcvf")
+
 [node name="Suzanne__MESH" parent="Dishes_Root/QR Code Plane" unique_id=149866686 instance=ExtResource("4_b3dy1")]
-transform = Transform3D(0.035, 0, 0, 0, 0.025824241, 0.023624323, 0, -0.023624323, 0.025824241, 0, 0.012776837, 0)
+transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0, 0, 0.04)
 script = ExtResource("5_rxm5d")
 
 [node name="Suzanne" parent="Dishes_Root/QR Code Plane/Suzanne__MESH" index="0" unique_id=510792282]
@@ -179,6 +189,7 @@ theme_override_font_sizes/font_size = 27
 text = "Fix Reference Button"
 
 [node name="Menu Root" type="Control" parent="." unique_id=1325459761]
+visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -186,6 +197,7 @@ anchor_right = 0.5
 offset_left = -20.0
 offset_right = -20.0
 grow_horizontal = 2
+script = ExtResource("12_exllb")
 
 [node name="Panel" type="Panel" parent="Menu Root" unique_id=1861774551]
 layout_mode = 1
@@ -195,9 +207,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -233.0
-offset_top = -1041.0
+offset_top = 103.0
 offset_right = 233.0
-offset_bottom = -20.0
+offset_bottom = 1124.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -250,6 +262,105 @@ text = "Pizza de Calabresa"
 layout_mode = 2
 text = "Pizza de Calabresa"
 
-[connection signal="pressed" from="Debug Button" to="CameraOrigin3D/PhoneCamera3D" method="Reset_Pos"]
+[node name="Button9" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1591455882]
+layout_mode = 2
+text = "Pizza de Calabresa"
 
+[node name="Button10" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=819743242]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button11" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1078909396]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button12" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1751263692]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button13" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1344367370]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button14" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1919252479]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button15" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=439800025]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button16" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=732077151]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button17" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=507758283]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button18" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=953254078]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button19" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1859565310]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button20" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1658770337]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button21" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1706125077]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button22" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=122042520]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button23" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1701844095]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button24" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1661433453]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button25" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=28586814]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button26" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1279311888]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button27" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1106337244]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button28" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=745814494]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button29" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1010997073]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button30" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1766090070]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button31" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=2007392429]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[node name="Button32" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1971371142]
+layout_mode = 2
+text = "Pizza de Calabresa"
+
+[connection signal="pressed" from="Debug Button" to="CameraOrigin3D/PhoneCamera3D" method="Reset_Pos"]
+[connection signal="pressed" from="Debug Button" to="Menu Root" method="Toggle_Visibility"]
+
+[editable path="Dishes_Root/QR Code Plane"]
+[editable path="Dishes_Root/QR Code Plane/Rigged Plane"]
 [editable path="Dishes_Root/QR Code Plane/Suzanne__MESH"]

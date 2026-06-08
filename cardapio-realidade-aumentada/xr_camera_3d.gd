@@ -11,6 +11,7 @@ var k : float = 0.9
 var dt: float = 0.5
 
 var Last_Frame_Accelerometer: Vector3 = Vector3.ZERO
+@onready var dishes_root: Node3D = $"../../Dishes_Root"
 
 func _ready():
 	await get_tree().process_frame
@@ -23,11 +24,13 @@ func _physics_process(delta: float) -> void:
 	var gravity: Vector3 = Input.get_gravity()
 	
 	#var velocity: Vector3 = filter_vector3(Last_Frame_Accelerometer - Input.get_accelerometer(), 0.01) * delta
-	#var velocity: Vector3 = (Last_Frame_Accelerometer - gravity) * delta
-	var velocity: Vector3 = (Input.get_accelerometer() - gravity)  * delta
+	var velocity: Vector3 = (Last_Frame_Accelerometer - gravity) * delta
+	#var velocity: Vector3 = (Input.get_accelerometer() - gravity)  * delta
 	
+	var delta_pos: Vector3 = velocity * delta
 	
-	position += velocity * delta
+	position += delta_pos
+	dishes_root.position -= delta_pos
 	
 	print(position)
 	Last_Frame_Accelerometer = gravity
