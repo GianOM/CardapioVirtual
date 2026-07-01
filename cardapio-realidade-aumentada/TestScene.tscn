@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cmthrayj8sn6h" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Peperoni.webp" id="15_8bg8d"]
 [ext_resource type="Texture2D" uid="uid://pj02coarex5v" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Marguerita.webp" id="16_f5py1"]
 [ext_resource type="Texture2D" uid="uid://kbkbogrni3tf" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/4Queijos.webp" id="17_asirl"]
+[ext_resource type="Script" uid="uid://bj7ht6pdo7k4r" path="res://Pizza-Info-SCRIPT.gd" id="18_qpw16"]
+[ext_resource type="Script" uid="uid://dbb1eiobkp1kj" path="res://Carrinho-Canvas-SCRIPT.gd" id="20_f5py1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5uqhi"]
 orientation = 2
@@ -70,12 +72,12 @@ bg_color = Color(0.12156863, 0.09411765, 0.06666667, 0.9411765)
 corner_radius_top_left = 45
 corner_radius_top_right = 45
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exllb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bg8d"]
 bg_color = Color(0.8666667, 0.16078432, 0.18431373, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc3a7"]
 bg_color = Color(0.12156863, 0.09411765, 0.06666667, 0.9411765)
@@ -83,6 +85,25 @@ corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1qv3"]
+bg_color = Color(0.18, 0.18, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.25, 0.25, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exllb"]
+bg_color = Color(0.8666667, 0.16078432, 0.18431373, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [node name="World Root" type="Node3D" unique_id=952781716]
 script = ExtResource("1_rxm5d")
@@ -196,164 +217,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_exllb")
 
-[node name="Panel" type="Panel" parent="Menu Root" unique_id=1861774551]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 1.0
-offset_left = -233.0
-offset_top = 781.0
-offset_right = -72.0
-offset_bottom = 1802.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Menu Root/Panel" unique_id=600625382]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = 18.0
-offset_right = -13.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu Root/Panel/ScrollContainer" unique_id=1628189580]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1193462578]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button2" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1597682691]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button3" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1023009245]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button4" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1771117383]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button5" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1536633436]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button6" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=959271494]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button7" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=2102840175]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button8" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=782219422]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button9" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1591455882]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button10" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=819743242]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button11" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1078909396]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button12" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1751263692]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button13" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1344367370]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button14" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1919252479]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button15" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=439800025]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button16" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=732077151]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button17" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=507758283]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button18" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=953254078]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button19" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1859565310]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button20" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1658770337]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button21" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1706125077]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button22" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=122042520]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button23" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1701844095]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button24" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1661433453]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button25" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=28586814]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button26" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1279311888]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button27" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1106337244]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button28" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=745814494]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button29" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1010997073]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button30" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1766090070]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button31" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=2007392429]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
-[node name="Button32" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1971371142]
-layout_mode = 2
-text = "Pizza de Calabresa"
-
 [node name="Bottom Panel" type="Panel" parent="Menu Root" unique_id=1873505844]
 layout_mode = 1
 anchors_preset = 12
@@ -402,9 +265,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 22.0
-offset_top = -271.0
+offset_top = -267.0
 offset_right = -22.0
-offset_bottom = -119.0
+offset_bottom = -115.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -457,7 +320,7 @@ offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_exllb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8bg8d")
 text = "Adicionar ao Carrinho"
 
 [node name="Nutritional Info Panel" type="Panel" parent="Menu Root" unique_id=2031266109]
@@ -470,9 +333,161 @@ offset_right = -373.0
 offset_bottom = 380.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lc3a7")
+script = ExtResource("18_qpw16")
+
+[node name="Title" type="RichTextLabel" parent="Menu Root/Nutritional Info Panel" unique_id=699776820]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 21.0
+offset_right = 198.0
+offset_bottom = 68.0
+theme_override_font_sizes/normal_font_size = 23
+text = "Vegetariana"
+fit_content = true
+
+[node name="Ingredients" type="RichTextLabel" parent="Menu Root/Nutritional Info Panel" unique_id=1544926017]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 58.0
+offset_right = 198.0
+offset_bottom = 190.0
+theme_override_font_sizes/normal_font_size = 15
+text = "Molho de tomate, mussarela, tomate, cebola roxa, pimentão, champignon, azeitonas, milho, orégano
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu Root/Nutritional Info Panel" unique_id=587189069]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 225.0
+offset_right = 206.0
+offset_bottom = 226.0
+
+[node name="Preco" type="RichTextLabel" parent="Menu Root/Nutritional Info Panel" unique_id=1846865817]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 197.0
+offset_right = 198.0
+offset_bottom = 219.0
+theme_override_colors/default_color = Color(0.8666667, 0.16078432, 0.18431373, 1)
+theme_override_font_sizes/normal_font_size = 15
+text = "R$ 75,00"
+fit_content = true
+vertical_alignment = 1
+
+[node name="Calorias" type="RichTextLabel" parent="Menu Root/Nutritional Info Panel" unique_id=805030475]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 243.0
+offset_right = 198.0
+offset_bottom = 312.0
+theme_override_font_sizes/normal_font_size = 15
+text = "320 Calorias/fatia"
+fit_content = true
+
+[node name="Carrinho Button" type="Button" parent="Menu Root" unique_id=2044153976]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 482.0
+offset_top = 56.0
+offset_right = -52.0
+offset_bottom = 112.0
+text = "Carrinho"
+
+[node name="Carrinho_Canvas" type="CanvasLayer" parent="Menu Root/Carrinho Button" unique_id=39412233]
+script = ExtResource("20_f5py1")
+
+[node name="Background" type="ColorRect" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=770467569]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09803922, 0.09803922, 0.09411765, 1)
+
+[node name="Return Button" type="Button" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=1486432855]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 38.0
+offset_top = 71.0
+offset_right = -525.0
+offset_bottom = 116.0
+grow_horizontal = 2
+text = "<"
+
+[node name="Carrinho Title" type="Label" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=1823781049]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 198.5
+offset_top = 54.0
+offset_right = -199.5
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Carrinho"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=664417388]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 202.0
+offset_right = -40.0
+offset_bottom = 1202.0
+grow_horizontal = 2
+theme_override_constants/separation = 13
+
+[node name="Panel" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=2120267044]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
+
+[node name="Panel2" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1329901275]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
+
+[node name="Panel3" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=800334937]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
+
+[node name="Panel4" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1535285433]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
+
+[node name="Panel5" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=2121380472]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
+
+[node name="Carrinho Button2" type="Button" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=625396683]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -151.0
+offset_right = -35.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_exllb")
+text = "Finalizar Pedido"
 
 [connection signal="pressed" from="Debug Button" to="CameraOrigin3D/PhoneCamera3D" method="Reset_Pos"]
 [connection signal="pressed" from="Debug Button" to="Menu Root" method="Toggle_Visibility"]
+[connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/PizzaVegetariana Button" to="Menu Root/Nutritional Info Panel" method="_on_Vegetariana_Selected"]
+[connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/PizzaPortuguesa Button" to="Menu Root/Nutritional Info Panel" method="_on_Portuguesa_Selected"]
+[connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/PizzaPeperoni Button" to="Menu Root/Nutritional Info Panel" method="_on_Peperoni_Selected"]
+[connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/PizzaMarguerita Button" to="Menu Root/Nutritional Info Panel" method="_on_Marguerita_Selected"]
+[connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/Pizza4Queijos Button" to="Menu Root/Nutritional Info Panel" method="_on_4Queijos_Selected"]
+[connection signal="pressed" from="Menu Root/Carrinho Button" to="Menu Root/Carrinho Button/Carrinho_Canvas" method="Reveal_Canvas"]
+[connection signal="pressed" from="Menu Root/Carrinho Button/Carrinho_Canvas/Return Button" to="Menu Root/Carrinho Button/Carrinho_Canvas" method="Hide_Canvas"]
 
 [editable path="Dishes_Root/QR Code Plane"]
 [editable path="Dishes_Root/QR Code Plane/Rigged Plane"]
