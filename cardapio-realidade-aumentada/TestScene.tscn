@@ -12,6 +12,11 @@
 [ext_resource type="Shader" uid="uid://cw4gu4ttaedft" path="res://Background_QuadMehs.gdshader" id="9_b3dy1"]
 [ext_resource type="Script" uid="uid://b0f6yg47qr66r" path="res://Mesh_Instance_Background.gd" id="10_rxm5d"]
 [ext_resource type="Script" uid="uid://c72gsqkeooud7" path="res://Menu__SCRIPT.gd" id="12_exllb"]
+[ext_resource type="Texture2D" uid="uid://crxjgpnempefk" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Vegetariana.webp" id="13_i67pj"]
+[ext_resource type="Texture2D" uid="uid://dnsbocgy3jpn3" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Portuguesa.webp" id="14_qpw16"]
+[ext_resource type="Texture2D" uid="uid://cmthrayj8sn6h" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Peperoni.webp" id="15_8bg8d"]
+[ext_resource type="Texture2D" uid="uid://pj02coarex5v" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Marguerita.webp" id="16_f5py1"]
+[ext_resource type="Texture2D" uid="uid://kbkbogrni3tf" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/4Queijos.webp" id="17_asirl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5uqhi"]
 orientation = 2
@@ -59,6 +64,25 @@ albedo_color = Color(0.27885827, 0.6382675, 0.22979221, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b3dy1"]
 points = PackedVector3Array(-0.041307237, -0.95566714, 0.6129175, 0.32892573, 0.93857425, -0.046321563, 0.3299492, 0.9415191, -0.08766074, -1.3889015, 0.33926085, -0.39576465, 1.2235432, 0.03162808, -0.5183448, 0.32772526, 0.64806354, 0.8147174, -0.040264253, 0.07247961, -0.8086347, -0.81691253, 0.44136775, 0.6075423, -0.3469535, -0.96232456, 0.38528854, 0.816982, 0.44140598, 0.6074345, 0.040192217, 0.7587079, -0.650779, 0.3469534, -0.96232456, 0.38528854, 1.3889015, 0.33926085, -0.39559472, -0.44999605, 0.89244384, 0.076492, -1.2235258, 0.031627513, -0.5183374, 0.039063666, -0.16445968, -0.67180884, -0.32772535, 0.6480635, 0.81471735, 0.08054834, 0.55641264, -0.8113533, 0.122524105, -0.70313084, 0.73122066, -1.2724882, 0.40252182, -0.5388704, -0.28330624, -0.81741184, 0.6424729, -1.3453965, 0.07894377, -0.39576465, -0.08213556, 0.8962011, -0.4983086, 1.2724881, 0.40252185, -0.53887045, 0.3242725, -0.8999277, 0.5625884, 1.3453963, 0.07894377, -0.39559472, 0.3309909, 0.73737943, 0.740043, -0.36519787, 0.15460174, 0.8072317, 1.3453963, 0.4260332, -0.39559472, 0.44324338, 0.8386354, -0.40838757, 0.36540705, 0.15458164, 0.8071312, -0.4540762, 0.9006067, -0.21173923)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ivru"]
+bg_color = Color(0.12156863, 0.09411765, 0.06666667, 0.9411765)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exllb"]
+bg_color = Color(0.8666667, 0.16078432, 0.18431373, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc3a7"]
+bg_color = Color(0.12156863, 0.09411765, 0.06666667, 0.9411765)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
 
 [node name="World Root" type="Node3D" unique_id=952781716]
 script = ExtResource("1_rxm5d")
@@ -112,32 +136,6 @@ handle_input_locally = false
 size = Vector2i(610, 1356)
 render_target_update_mode = 0
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=582600431]
-offset_right = 9.0
-offset_bottom = 1351.0
-mouse_filter = 2
-
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=485497332]
-offset_left = 600.0
-offset_right = 609.0
-offset_bottom = 1351.0
-mouse_filter = 2
-
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=281724288]
-offset_left = 608.0
-offset_top = 1346.0
-offset_right = 617.0
-offset_bottom = 2697.0
-rotation = 1.5707964
-mouse_filter = 2
-
-[node name="ColorRect4" type="ColorRect" parent="." unique_id=1570464538]
-offset_left = 608.0
-offset_right = 617.0
-offset_bottom = 1351.0
-rotation = 1.5707964
-mouse_filter = 2
-
 [node name="Dishes_Root" type="Node3D" parent="." unique_id=288030668]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.18)
 
@@ -174,6 +172,7 @@ shape = SubResource("ConvexPolygonShape3D_b3dy1")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
 [node name="Debug Button" type="Button" parent="." unique_id=892065304]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -189,27 +188,24 @@ theme_override_font_sizes/font_size = 27
 text = "Fix Reference Button"
 
 [node name="Menu Root" type="Control" parent="." unique_id=1325459761]
-visible = false
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = -20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("12_exllb")
 
 [node name="Panel" type="Panel" parent="Menu Root" unique_id=1861774551]
+visible = false
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_right = 1.0
 offset_left = -233.0
-offset_top = 103.0
-offset_right = 233.0
-offset_bottom = 1124.0
+offset_top = 781.0
+offset_right = -72.0
+offset_bottom = 1802.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -357,6 +353,123 @@ text = "Pizza de Calabresa"
 [node name="Button32" type="Button" parent="Menu Root/Panel/ScrollContainer/VBoxContainer" unique_id=1971371142]
 layout_mode = 2
 text = "Pizza de Calabresa"
+
+[node name="Bottom Panel" type="Panel" parent="Menu Root" unique_id=1873505844]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -333.0
+offset_right = 2.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ivru")
+
+[node name="Sabores Label" type="Label" parent="Menu Root/Bottom Panel" unique_id=826172002]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 29.0
+offset_top = 29.0
+offset_right = -451.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Sabores:"
+
+[node name="See More Button" type="Button" parent="Menu Root/Bottom Panel" unique_id=55546766]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 455.0
+offset_top = 37.0
+offset_right = -35.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8666667, 0.16078432, 0.18431373, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0.11372549, 1)
+theme_override_font_sizes/font_size = 20
+text = "Ver mais  >"
+flat = true
+
+[node name="Sabores HBox" type="HBoxContainer" parent="Menu Root/Bottom Panel" unique_id=2016819902]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -271.0
+offset_right = -22.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="PizzaVegetariana Button" type="TextureButton" parent="Menu Root/Bottom Panel/Sabores HBox" unique_id=372127484]
+custom_minimum_size = Vector2(110, 100)
+layout_mode = 2
+texture_normal = ExtResource("13_i67pj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PizzaPortuguesa Button" type="TextureButton" parent="Menu Root/Bottom Panel/Sabores HBox" unique_id=996148099]
+custom_minimum_size = Vector2(110, 100)
+layout_mode = 2
+texture_normal = ExtResource("14_qpw16")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PizzaPeperoni Button" type="TextureButton" parent="Menu Root/Bottom Panel/Sabores HBox" unique_id=2069373935]
+custom_minimum_size = Vector2(110, 100)
+layout_mode = 2
+texture_normal = ExtResource("15_8bg8d")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PizzaMarguerita Button" type="TextureButton" parent="Menu Root/Bottom Panel/Sabores HBox" unique_id=2035617931]
+custom_minimum_size = Vector2(110, 100)
+layout_mode = 2
+texture_normal = ExtResource("16_f5py1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Pizza4Queijos Button" type="TextureButton" parent="Menu Root/Bottom Panel/Sabores HBox" unique_id=325274164]
+custom_minimum_size = Vector2(110, 100)
+layout_mode = 2
+texture_normal = ExtResource("17_asirl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Carrinho Button" type="Button" parent="Menu Root/Bottom Panel" unique_id=170133014]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = -106.0
+offset_right = -33.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_exllb")
+text = "Adicionar ao Carrinho"
+
+[node name="Nutritional Info Panel" type="Panel" parent="Menu Root" unique_id=2031266109]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 21.0
+offset_top = 46.0
+offset_right = -373.0
+offset_bottom = 380.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lc3a7")
 
 [connection signal="pressed" from="Debug Button" to="CameraOrigin3D/PhoneCamera3D" method="Reset_Pos"]
 [connection signal="pressed" from="Debug Button" to="Menu Root" method="Toggle_Visibility"]
