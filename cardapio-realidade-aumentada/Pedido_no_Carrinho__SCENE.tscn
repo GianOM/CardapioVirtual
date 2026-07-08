@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://s35d8yjcs3o"]
+
+[ext_resource type="Script" uid="uid://d2kpf6y0pej72" path="res://Cart_Item__SCRIPT.gd" id="1_dhq4k"]
+[ext_resource type="Texture2D" uid="uid://crxjgpnempefk" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Vegetariana.webp" id="1_pswiy"]
+[ext_resource type="Texture2D" uid="uid://dptbmfxwov44m" path="res://UI Textures/Edit Pencil.png" id="2_dhq4k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1qv3"]
+bg_color = Color(0.18, 0.18, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.25, 0.25, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="Pedido 1" type="Panel" unique_id=2120598737]
+custom_minimum_size = Vector2(0, 180)
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
+script = ExtResource("1_dhq4k")
+
+[node name="Pedido Image Preview" type="TextureRect" parent="." unique_id=1707791340]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 20.0
+offset_right = 141.0
+offset_bottom = 159.0
+texture = ExtResource("1_pswiy")
+expand_mode = 3
+
+[node name="Pizza Title" type="Label" parent="Pedido Image Preview" unique_id=975441065]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 17.0
+offset_right = 174.0
+offset_bottom = 37.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 27
+text = "Vegetariana"
+
+[node name="Pizza Ingredientes" type="RichTextLabel" parent="Pedido Image Preview/Pizza Title" unique_id=1346443814]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 326.0
+offset_bottom = 133.0
+text = "Molho de tomate, mussarela, tomate, cebola roxa, pimentão, champignon, azeitonas, milho, orégano
+"
+fit_content = true
+
+[node name="Close Button" type="Button" parent="." unique_id=1174960673]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -31.0
+offset_top = 11.0
+offset_right = -13.0
+offset_bottom = 42.0
+grow_horizontal = 0
+text = "X"
+flat = true
+
+[node name="Edit Button" type="Button" parent="." unique_id=1174174781]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 177.0
+offset_top = 137.0
+offset_right = 259.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 18
+text = "Editar"
+icon = ExtResource("2_dhq4k")
+flat = true
+expand_icon = true

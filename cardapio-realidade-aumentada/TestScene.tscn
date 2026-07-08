@@ -18,7 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://pj02coarex5v" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/Marguerita.webp" id="16_f5py1"]
 [ext_resource type="Texture2D" uid="uid://kbkbogrni3tf" path="res://UI Textures/Sabores de Pizza/Pizza Flavors/4Queijos.webp" id="17_asirl"]
 [ext_resource type="Script" uid="uid://bj7ht6pdo7k4r" path="res://Pizza-Info-SCRIPT.gd" id="18_qpw16"]
+[ext_resource type="Texture2D" uid="uid://bousjsjxvv2yw" path="res://UI Textures/Shopping Car.png" id="19_f5py1"]
+[ext_resource type="Texture2D" uid="uid://bmpa78wc42nwo" path="res://UI Textures/White Circle.png" id="20_asirl"]
 [ext_resource type="Script" uid="uid://dbb1eiobkp1kj" path="res://Carrinho-Canvas-SCRIPT.gd" id="20_f5py1"]
+[ext_resource type="Script" uid="uid://c1x3dxhyayjnc" path="res://Numero_de_Pedidos__SCRIPT.gd" id="21_iisml"]
+[ext_resource type="PackedScene" uid="uid://s35d8yjcs3o" path="res://Pedido_no_Carrinho__SCENE.tscn" id="23_5imwo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5uqhi"]
 orientation = 2
@@ -85,18 +89,6 @@ corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1qv3"]
-bg_color = Color(0.18, 0.18, 0.18, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.25, 0.25, 0.25, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exllb"]
 bg_color = Color(0.8666667, 0.16078432, 0.18431373, 1)
@@ -386,17 +378,63 @@ theme_override_font_sizes/normal_font_size = 15
 text = "320 Calorias/fatia"
 fit_content = true
 
-[node name="Carrinho Button" type="Button" parent="Menu Root" unique_id=2044153976]
+[node name="Carrinho Button" type="TextureButton" parent="Menu Root" unique_id=1324389393]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_left = 482.0
-offset_top = 56.0
-offset_right = -52.0
+offset_left = 491.0
+offset_top = 61.0
+offset_right = -67.0
 offset_bottom = 112.0
-text = "Carrinho"
+texture_normal = ExtResource("19_f5py1")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="White Background Circle" type="TextureRect" parent="Menu Root/Carrinho Button" unique_id=1132221348]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.855, 1.855)
+mouse_filter = 2
+texture = ExtResource("20_asirl")
+expand_mode = 3
+
+[node name="Pedidos" type="TextureRect" parent="Menu Root/Carrinho Button/White Background Circle" unique_id=1870897931]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 3.0
+offset_right = 56.0
+offset_bottom = 23.0
+texture = ExtResource("20_asirl")
+expand_mode = 3
+script = ExtResource("21_iisml")
+
+[node name="Numero de Pedidos" type="Label" parent="Menu Root/Carrinho Button/White Background Circle/Pedidos" unique_id=1465214963]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -13.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = 17.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "1"
 
 [node name="Carrinho_Canvas" type="CanvasLayer" parent="Menu Root/Carrinho Button" unique_id=39412233]
+visible = false
 script = ExtResource("20_f5py1")
 
 [node name="Background" type="ColorRect" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=770467569]
@@ -439,30 +477,24 @@ offset_bottom = 1202.0
 grow_horizontal = 2
 theme_override_constants/separation = 13
 
-[node name="Panel" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=2120267044]
-custom_minimum_size = Vector2(0, 180)
+[node name="Pedido 1" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=2120598737 instance=ExtResource("23_5imwo")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
 
-[node name="Panel2" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1329901275]
-custom_minimum_size = Vector2(0, 180)
+[node name="Pedido 2" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1616485905 instance=ExtResource("23_5imwo")]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
 
-[node name="Panel3" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=800334937]
-custom_minimum_size = Vector2(0, 180)
+[node name="Pedido 3" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1473337773 instance=ExtResource("23_5imwo")]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
 
-[node name="Panel4" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1535285433]
-custom_minimum_size = Vector2(0, 180)
+[node name="Pedido 4" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=1115256 instance=ExtResource("23_5imwo")]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
 
-[node name="Panel5" type="Panel" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=2121380472]
-custom_minimum_size = Vector2(0, 180)
+[node name="Pedido 5" parent="Menu Root/Carrinho Button/Carrinho_Canvas/VBoxContainer" unique_id=482709870 instance=ExtResource("23_5imwo")]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u1qv3")
 
 [node name="Carrinho Button2" type="Button" parent="Menu Root/Carrinho Button/Carrinho_Canvas" unique_id=625396683]
 anchors_preset = 12
@@ -486,6 +518,7 @@ text = "Finalizar Pedido"
 [connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/PizzaPeperoni Button" to="Menu Root/Nutritional Info Panel" method="_on_Peperoni_Selected"]
 [connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/PizzaMarguerita Button" to="Menu Root/Nutritional Info Panel" method="_on_Marguerita_Selected"]
 [connection signal="pressed" from="Menu Root/Bottom Panel/Sabores HBox/Pizza4Queijos Button" to="Menu Root/Nutritional Info Panel" method="_on_4Queijos_Selected"]
+[connection signal="pressed" from="Menu Root/Bottom Panel/Carrinho Button" to="Menu Root/Carrinho Button/Carrinho_Canvas" method="Adcionar_Novo_Pedido"]
 [connection signal="pressed" from="Menu Root/Carrinho Button" to="Menu Root/Carrinho Button/Carrinho_Canvas" method="Reveal_Canvas"]
 [connection signal="pressed" from="Menu Root/Carrinho Button/Carrinho_Canvas/Return Button" to="Menu Root/Carrinho Button/Carrinho_Canvas" method="Hide_Canvas"]
 

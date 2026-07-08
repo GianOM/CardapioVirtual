@@ -1,11 +1,13 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+enum Sabores{
+	VEGETARIANA,
+	PORTUGUESA,
+	PEPERONI,
+	MARGUERITA,
+	QUATROQUEIJOS
+}
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@warning_ignore("unused_signal")
+signal Pizza_Flavor_Selected(sabor_da_pizza: Sabores)
